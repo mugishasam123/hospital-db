@@ -35,3 +35,17 @@ invoice_id INT,
 treatment_id INT,
 FOREIGN KEY(invoice_id) REFERENCES invoices(id),FOREIGN KEY(treatment_id) REFERENCES treatments(id));
 
+CREATE TABLE medical_histories_treatments (
+  med_histories_id integer,
+  treat_id integer,
+  FOREIGN KEY (med_histories_id) REFERENCES medical_histories(id),
+  FOREIGN KEY (treat_id) REFERENCES treatments(id)
+);
+CREATE INDEX ON medical_histories (patient_id);
+CREATE INDEX ON invoices (medical_history_id);
+CREATE INDEX ON invoice_items (treatment_id);
+CREATE INDEX ON invoice_items (invoice_id);
+CREATE INDEX ON medical_histories_treatments (med_histories_id);
+CREATE INDEX ON medical_histories_treatments (treat_id);
+
+
